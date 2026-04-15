@@ -1,0 +1,129 @@
+# Gradle Version Catalog (libs.versions.toml)
+# This file centralizes dependency versions for the Android project using Gradle's version catalog feature.
+# It provides type-safe accessors and centralized version management across all modules.
+
+[versions]
+# Core Build Tools
+agp = "8.13.2"                    # Android Gradle Plugin - controls Android build process and tooling
+coreSplashscreen = "1.0.1"
+kotlin = "2.1.0"                 # Kotlin language version - must match across all Kotlin-related dependencies
+ksp = "2.1.0-1.0.29"            # Kotlin Symbol Processing - annotation processing for Kotlin
+
+# AndroidX Core Libraries - foundational Android components
+coreKtx = "1.15.0"               # AndroidX Core KTX extensions
+activityCompose = "1.10.1"       # Activity integration for Jetpack Compose
+lifecycle = "2.8.7"              # Lifecycle-aware components (ViewModel, LiveData)
+lifecycleRuntimeKtx = "2.8.7"    # Lifecycle runtime KTX extensions
+
+# Jetpack Compose - modern Android UI toolkit
+composeBom = "2025.07.00"        # BOM (Bill of Materials) manages Compose library versions
+
+# UI & Layout
+navigationCompose = "2.8.0"
+window = "1.2.0"                  # Window size class support for responsive design
+material3Adaptive = "1.0.0-alpha05"  # Material 3 adaptive layouts (experimental)
+
+# Dependency Injection - Hilt framework built on Dagger
+hilt = "2.53"                     # Main Hilt framework version
+hiltExt = "1.2.0"                # AndroidX Hilt extensions (Navigation, ViewModel, etc.)
+
+# Networking & HTTP
+retrofit = "2.11.0"               # Type-safe HTTP client for Android and Java
+okhttp = "4.12.0"                # HTTP & HTTP/2 client for Android and Java applications
+
+# Database - Room persistence library
+room = "2.6.1"                    # SQLite object mapping library
+
+# Asynchronous Programming
+coroutines = "1.9.0"              # Kotlin coroutines for asynchronous programming
+
+# Image Loading
+coil = "2.7.0"                    # Image loading library for Android backed by Kotlin Coroutines
+
+# Utilities
+timber = "5.0.1"                  # Logging utility that's a drop-in replacement for Android's Log class
+
+# Testing Frameworks
+junit = "4.13.2"                  # JUnit 4 for unit testing
+junitVersion = "1.1.5"            # AndroidX JUnit extensions for instrumented tests
+espressoCore = "3.5.1"
+coreKtxVersion = "1.18.0"           # UI testing framework for Android
+
+[libraries]
+# AndroidX Core Libraries - essential Android components
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# Lifecycle Components - manage UI component lifecycles
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+
+# Jetpack Compose UI Libraries - modern declarative UI framework
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# Responsive & Adaptive UI - support for different screen sizes and orientations
+compose-material3-adaptive-navigation = { group = "androidx.compose.material3", name = "material3-adaptive-navigation-suite", version.ref = "material3Adaptive" }
+compose-material3-adaptive = { group = "androidx.compose.material3", name = "material3-adaptive", version.ref = "material3Adaptive" }
+
+# Dependency Injection - Hilt provides compile-time dependency injection
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltExt" }
+
+# Networking - Retrofit HTTP client with OkHttp
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+# Database - Room SQLite abstraction layer
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
+# Asynchronous Programming - Kotlin Coroutines
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Image Loading - Coil image loading library
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+
+# Utilities - Logging and debugging tools
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# Testing Libraries - Unit and UI testing frameworks
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
+
+[plugins]
+# Core Build Plugins - essential build configuration
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Code Generation & Processing - annotation processors and code generation
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Serialization - JSON and data serialization support
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[bundles]
+# Convenience Bundles - groups related dependencies for easier inclusion
+hilt = ["hilt-android", "hilt-navigation-compose"]  # Core Hilt runtime dependencies for DI
